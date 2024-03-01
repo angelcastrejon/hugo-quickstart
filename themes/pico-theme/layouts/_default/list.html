@@ -1,8 +1,17 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
-  {{ .Content }}
-  {{ range .Pages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-    {{ .Summary }}
-  {{ end }}
+
+
+<h1>{{replace .Title "-" " " | strings.Title}}</h1>
+<hr />
+{{ .Content }}
+<hr />
+{{ range .Pages }}
+<article>
+<header><h3><a href="{{ .RelPermalink }}">{{replace .LinkTitle "-" " " | strings.Title}}</a></h3></header>
+{{ .Summary }}
+{{ if .Truncated }}
+<footer><p><a href="{{ .RelPermalink }}">Read more...</a></p></footer>
+{{ end }}
+</article>
+{{ end }}
 {{ end }}

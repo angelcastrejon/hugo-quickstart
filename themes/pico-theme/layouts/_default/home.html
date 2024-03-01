@@ -2,7 +2,7 @@
 {{ define "main" }}
 
 {{ $stylesheet := resources.Get "css/home.css" }}
-<link rel="stylesheet" href="{{ $stylesheet.Permalink }}">
+<link rel="stylesheet" href="{{ $stylesheet.RelPermalink }}">
 
 
 {{ .Content }}
